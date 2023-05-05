@@ -35,7 +35,7 @@ def get_city_info(city, country):
 
         # Flash the message with category "time"
         flash(message, "time")
-        wikipedia.set_lang("en")
+        wikipedia.set_lang("fa")
         try:
             # Get the summary of the city
             summary = wikipedia.summary(city)
@@ -54,10 +54,12 @@ def get_city_info(city, country):
             message += "\n".join(attractions) + "\n"
             # Flash the message with category "attractions"
             flash(message, "attractions")
-            # Get the image url of the city from Wikipedia
-            image_url = page.images[0]
-            # Flash the image url with category "image"
-            flash(image_url, "image")
+
+# Get the image urls of the city from Wikipedia
+            image_urls = page.images[:5]
+            # Flash the image urls with category "image"
+            for image_url in image_urls:
+                flash(image_url, "image")
         except wikipedia.exceptions.DisambiguationError as e:
             # Handle the case when the city name is ambiguous
             # Append an error message to the message variable

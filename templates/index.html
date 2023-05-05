@@ -5,6 +5,16 @@
     <title>(طاها تنومندیان ، سورنا صالحی)</title>
     <!-- Add some styles to the elements -->
     <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 10px;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: rgb(12, 193, 181);
@@ -54,16 +64,18 @@
 <body>
     <h1>اطلاعات شهر</h1>
     <form method="POST" action="/">
-        <label for="Country">لطفا اسم کشور مورد نطرت رو وارد کن:</label>
+        <label for="Country">لطفا اسم کشور مورد نظرت رو وارد کن:</label>
         <input type="text" id="Country" name="Country" required>
-        <label for="City">لطفا اسم شهر مورد نطرت رو وارد کن:</label>
+        <label for="City">لطفا اسم شهر مورد نظرت رو وارد کن:</label>
         <input type="text" id="City" name="City" required>
         <button type="submit">ثبت</button>
     </form>
     <div id="results">
+        
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
               {% for category, message in messages %}
+
                   {% if category == "time" %}
                       <div class="{{ category }}">
                           {{ message }}
@@ -90,5 +102,6 @@
           {% endif %}
       {% endwith %}
     </div>
+    <h3>ساخته شده توسط :(طاها تنومندیان و سورنا صالحی)</h3>
 </body>
 </html>
