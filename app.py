@@ -56,7 +56,7 @@ def get_city_info(city, country):
             flash(message, "attractions")
 
 # Get the image urls of the city from Wikipedia
-            image_urls = page.images[:5]
+            image_urls = page.images[:3]
             # Flash the image urls with category "image"
             for image_url in image_urls:
                 flash(image_url, "image")
