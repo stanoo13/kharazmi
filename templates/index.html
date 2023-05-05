@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>(طاها تنومندیان ، سورنا صالحی)</title>
+    <!-- Add some styles to the elements -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(12, 193, 181);
+        }
+        h1 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin: 10px;
+        }
+        input {
+            width: 200px;
+        }
+        button {
+            margin: 10px;
+            width: 100px;
+            height: 30px;
+            background-color: rgb(68, 223, 16);
+            color: white;
+            border: none;
+        }
+        #results {
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid rgb(255, 0, 0);
+        }
+        .time {
+            font-weight: bold;
+            font-size: larger;
+        }
+        .summary {
+            text-align: justify;
+        }
+        .attractions {
+            list-style-type: circle;
+        }
+    </style>
+    <!-- Link to the external css file for icons -->
+    <link rel="stylesheet" href="icons.css">
+</head>
+<body>
+    <h1>اطلاعات شهر</h1>
+    <form method="POST" action="/">
+        <label for="Country">لطفا اسم کشور مورد نطرت رو وارد کن:</label>
+        <input type="text" id="Country" name="Country" required>
+        <label for="City">لطفا اسم شهر مورد نطرت رو وارد کن:</label>
+        <input type="text" id="City" name="City" required>
+        <button type="submit">ثبت</button>
+    </form>
+    <div id="results">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                  {% if category == "time" %}
+                      <div class="{{ category }}">
+                          {{ message }}
+                      </div>
+                  {% elif category == "summary" %}
+                      <div class="{{ category }}">
+                          {{ message|replace("\n", "<br>")|safe }} <!-- Changed the order of filters -->
+                      </div>
+                  {% elif category == "attractions" %}
+                      <div class="{{ category }}">
+                          {{ message|replace("\n", "<br>")|safe }} <!-- Changed the order of filters -->
+                      </div>
+                  {% elif category == "image" %}
+                      <div class="{{ category }}">
+                          <!-- Add an img tag to show the image of the city -->
+                          <img src="{{ message }}" alt="{{ city }}" width="300" height="200">
+                      </div>
+                  {% else %}
+                      <div class="{{ category }}">
+                          {{ message }}
+                      </div>
+                  {% endif %}
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+    </div>
+</body>
+</html>

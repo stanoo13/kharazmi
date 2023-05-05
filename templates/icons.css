@@ -1,0 +1,36 @@
+/* CSS code for icons */
+/* Use Font Awesome icons */
+@import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
+
+/* Define a class for each attraction category */
+.attractions i {
+    margin-right: 5px;
+}
+
+.attractions .museum {
+    color: brown;
+}
+
+.attractions .park {
+    color: green;
+}
+
+.attractions .building {
+    color: gray;
+}
+
+.attractions .monument {
+    color: gold;
+}
+
+.attractions .bridge {
+    color: blue;
+}
+
+.attractions .church {
+    color: purple;
+}
+
+.attractions .castle {
+    color: maroon;
+}
